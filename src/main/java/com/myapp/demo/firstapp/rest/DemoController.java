@@ -11,6 +11,10 @@ public class DemoController {
     // define a private field for dependency
     private PersonalDetails personalDetails;
 
+    // field injection
+    // generally not  used difficult to test
+    /*@Autowired
+    private PersonalDetails myData;*/
 
     // define a constructor for dependency injection
     // autowired tells to inject dependency
