@@ -19,6 +19,14 @@ public class DemoController {
         this.personalDetails = myPersonalDetails;
     }
 
+
+    // getter injection
+    // if dependency is optional
+    /*@Autowired
+    public void getter(PersonalDetails myPersonalDetails){
+        this.personalDetails = myPersonalDetails;
+    }*/
+
     // need to create a rest api
 
     @GetMapping("/getPersonalDetails")
