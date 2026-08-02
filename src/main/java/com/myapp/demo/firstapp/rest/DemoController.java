@@ -22,7 +22,8 @@ public class DemoController {
     @Autowired // id you have only one constructor no need to use autowired
 
     //  @Qualifier is used when multiple beans of the same type exist, and Spring needs to know which specific bean to inject.
-    public DemoController(@Qualifier("nameDetails") PersonalDetails myPersonalDetails){
+    //  public DemoController(@Qualifier("nameDetails") PersonalDetails myPersonalDetails){
+    public DemoController(PersonalDetails myPersonalDetails){
         this.personalDetails = myPersonalDetails;
     }
 
