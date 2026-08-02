@@ -2,6 +2,7 @@ package com.myapp.demo.firstapp.rest;
 
 import com.myapp.demo.firstapp.common.PersonalDetails;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -19,7 +20,9 @@ public class DemoController {
     // define a constructor for dependency injection
     // autowired tells to inject dependency
     @Autowired // id you have only one constructor no need to use autowired
-    public DemoController(PersonalDetails myPersonalDetails){
+
+    //  @Qualifier is used when multiple beans of the same type exist, and Spring needs to know which specific bean to inject.
+    public DemoController(@Qualifier("nameDetails") PersonalDetails myPersonalDetails){
         this.personalDetails = myPersonalDetails;
     }
 
