@@ -2,9 +2,9 @@ package com.myapp.demo.firstapp.common;
 
 import org.springframework.web.bind.annotation.GetMapping;
 
-public class EmploymentDetails {
+public class EmploymentDetails implements  PersonalDetails{
 
-    public void EmploymentDetails(){
+    public EmploymentDetails(){
         System.out.println("in employment details");
     }
 

@@ -19,6 +19,6 @@ public class ConfigBeanController {
 
     @GetMapping("/configBean")
     public String getConfigBean(){
-        return "config bean testig";
+        return this.personalDetails.getPersonalDetails();
     }
 }
