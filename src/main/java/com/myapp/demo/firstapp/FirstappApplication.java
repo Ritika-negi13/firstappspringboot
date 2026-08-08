@@ -1,7 +1,9 @@
 package com.myapp.demo.firstapp;
 
+import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.Bean;
 
 @SpringBootApplication
 //component scanning for explicit or custom packages outside main
@@ -16,4 +18,11 @@ public class FirstappApplication {
 		SpringApplication.run(FirstappApplication.class, args);
 	}
 
+	// creating new command line runner
+	@Bean
+	public CommandLineRunner commandLineRunner(String args[]){
+		return runner -> {
+			System.out.println("Hello world");
+		};
+	}
 }
