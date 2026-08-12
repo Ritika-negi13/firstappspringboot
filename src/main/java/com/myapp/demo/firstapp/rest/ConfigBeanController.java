@@ -17,6 +17,9 @@ public class ConfigBeanController {
         this.personalDetails = personalDetails;
     }
 
+
+
+    // crea
     @GetMapping("/configBean")
     public String getConfigBean(){
         return this.personalDetails.getPersonalDetails();
