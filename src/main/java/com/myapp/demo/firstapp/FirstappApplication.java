@@ -1,5 +1,7 @@
 package com.myapp.demo.firstapp;
 
+import com.myapp.demo.firstapp.Entity.Student;
+import com.myapp.demo.firstapp.dao.StudentDao;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -20,9 +22,16 @@ public class FirstappApplication {
 
 	// creating new command line runner
 	@Bean
-	public CommandLineRunner commandLineRunner(String args[]){
+	public CommandLineRunner commandLineRunner(StudentDao studentDao){
 		return runner -> {
-			System.out.println("Hello world");
+			createStudent(studentDao);
 		};
+	}
+
+	// saving data in database using jpa
+	public void createStudent(StudentDao studentDao){
+		Student student = new Student("Ritika" , "Negi" , "ritika.negi@gmail.com");
+		studentDao.save(student);
+		System.out.println("id : " + student.getId());
 	}
 }
