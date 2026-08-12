@@ -24,10 +24,17 @@ public class FirstappApplication {
 	@Bean
 	public CommandLineRunner commandLineRunner(StudentDao studentDao){
 		return runner -> {
-			createStudent(studentDao);
+//			createStudent(studentDao);
+			createMultipleStudent(studentDao);
 		};
 	}
 
+	public void createMultipleStudent(StudentDao studentDao){
+		Student student1 = new Student("Shivam" , "Mandloi" , "ritika.negi@gmail.com");
+		Student student2 = new Student("bb lemm" , "Negi" , "ritika.negi@gmail.com");
+		studentDao.save(student1);
+		studentDao.save(student2);
+	}
 	// saving data in database using jpa
 	public void createStudent(StudentDao studentDao){
 		Student student = new Student("Ritika" , "Negi" , "ritika.negi@gmail.com");
