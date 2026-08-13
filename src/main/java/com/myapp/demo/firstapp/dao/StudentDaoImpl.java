@@ -23,4 +23,10 @@ public class StudentDaoImpl  implements  StudentDao{
     public void save(Student student) {
         entityManager.persist(student);
     }
+
+
+   //    @Transactional is not needed since we are only performing the query not saving or anything
+    public Student findById(int id){
+        return entityManager.find(Student.class , id);
+    }
 }

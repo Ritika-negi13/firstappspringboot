@@ -25,7 +25,8 @@ public class FirstappApplication {
 	public CommandLineRunner commandLineRunner(StudentDao studentDao){
 		return runner -> {
 //			createStudent(studentDao);
-			createMultipleStudent(studentDao);
+//			createMultipleStudent(studentDao);
+			readStudent(studentDao);
 		};
 	}
 
@@ -40,5 +41,9 @@ public class FirstappApplication {
 		Student student = new Student("Ritika" , "Negi" , "ritika.negi@gmail.com");
 		studentDao.save(student);
 		System.out.println("id : " + student.getId());
+	}
+
+	public void readStudent(StudentDao studentDao){
+		System.out.println(studentDao.findById(3));
 	}
 }
