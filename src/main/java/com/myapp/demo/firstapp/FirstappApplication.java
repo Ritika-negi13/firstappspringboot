@@ -26,8 +26,18 @@ public class FirstappApplication {
 		return runner -> {
 //			createStudent(studentDao);
 //			createMultipleStudent(studentDao);
-			readStudent(studentDao);
+//			readStudent(studentDao);
+//			getAllStudent(studentDao);
+			queryForStudentByLastName(studentDao);
 		};
+	}
+
+	public void getAllStudent(StudentDao studentDao){
+		System.out.println(studentDao.findAll());
+	}
+
+	public void queryForStudentByLastName(StudentDao studentDao){
+		System.out.println(studentDao.findByLastName());
 	}
 
 	public void createMultipleStudent(StudentDao studentDao){
@@ -44,6 +54,6 @@ public class FirstappApplication {
 	}
 
 	public void readStudent(StudentDao studentDao){
-		System.out.println(studentDao.findById(3));
+		System.out.println(studentDao.findById(4));
 	}
 }
