@@ -28,7 +28,8 @@ public class FirstappApplication {
 //			createMultipleStudent(studentDao);
 //			readStudent(studentDao);
 //			getAllStudent(studentDao);
-			queryForStudentByLastName(studentDao);
+//			queryForStudentByLastName(studentDao);
+			updateStudent(studentDao);
 		};
 	}
 
@@ -55,5 +56,20 @@ public class FirstappApplication {
 
 	public void readStudent(StudentDao studentDao){
 		System.out.println(studentDao.findById(4));
+	}
+
+	public void updateStudent(StudentDao studentDao){
+		// find student with primaryid
+		int studentId =1 ;
+		Student student = studentDao.findById(1);
+
+		// update name
+		student.setFirstName("Ritu");
+		// update data
+
+		studentDao.update(student);
+		//print
+
+		System.out.println(student);
 	}
 }
