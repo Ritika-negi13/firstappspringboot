@@ -25,8 +25,20 @@ public class FirstappApplication {
 	public CommandLineRunner commandLineRunner(StudentDao studentDao){
 		return runner -> {
 //			createStudent(studentDao);
-			createMultipleStudent(studentDao);
+//			createMultipleStudent(studentDao);
+//			readStudent(studentDao);
+//			getAllStudent(studentDao);
+//			queryForStudentByLastName(studentDao);
+			updateStudent(studentDao);
 		};
+	}
+
+	public void getAllStudent(StudentDao studentDao){
+		System.out.println(studentDao.findAll());
+	}
+
+	public void queryForStudentByLastName(StudentDao studentDao){
+		System.out.println(studentDao.findByLastName());
 	}
 
 	public void createMultipleStudent(StudentDao studentDao){
@@ -40,5 +52,24 @@ public class FirstappApplication {
 		Student student = new Student("Ritika" , "Negi" , "ritika.negi@gmail.com");
 		studentDao.save(student);
 		System.out.println("id : " + student.getId());
+	}
+
+	public void readStudent(StudentDao studentDao){
+		System.out.println(studentDao.findById(4));
+	}
+
+	public void updateStudent(StudentDao studentDao){
+		// find student with primaryid
+		int studentId =1 ;
+		Student student = studentDao.findById(1);
+
+		// update name
+		student.setFirstName("Ritu");
+		// update data
+
+		studentDao.update(student);
+		//print
+
+		System.out.println(student);
 	}
 }
