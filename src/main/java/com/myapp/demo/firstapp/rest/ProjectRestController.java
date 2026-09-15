@@ -10,7 +10,7 @@ public class ProjectRestController {
 
     @GetMapping("/hello")
     public String sayHello(){
-        return "Hello Ritika";
+        return "Hello Ritika love shivam";
     }
 
     //curl --location 'http://localhost:4200/myFirstApp/test/hello'
