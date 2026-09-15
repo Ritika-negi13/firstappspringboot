@@ -4,7 +4,7 @@ public class StudentPojo {
     private String firstname ;
     private  String lastName;
 
-    StudentPojo(String firstName , String lastName){
+    public StudentPojo(String firstName, String lastName){
         this.firstname = firstName;
         this.lastName = lastName;
     }
@@ -14,7 +14,7 @@ public class StudentPojo {
         return lastName;
     }
 
-    public void getFirstname(String firstname) {
+    public void setFirstname(String firstname) {
         this.firstname = firstname;
     }
 
@@ -24,7 +24,7 @@ public class StudentPojo {
         this.lastName = lastName;
     }
 
-    public String setFirstname() {
+    public String getFirstname() {
         return firstname;
     }
 }
