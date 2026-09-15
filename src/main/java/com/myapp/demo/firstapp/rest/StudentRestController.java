@@ -1,6 +1,7 @@
 package com.myapp.demo.firstapp.rest;
 
 import com.myapp.demo.firstapp.Entity.StudentPojo;
+import jakarta.annotation.PostConstruct;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,13 +15,19 @@ import java.util.List;
 @RequestMapping("/student")
 public class StudentRestController {
 
+    private List<StudentPojo> student;
+
+    @PostConstruct // called once after bean is created
+    public void setData(){
+        this.student = new ArrayList<>();
+        this.student.add(new StudentPojo("Ritika" , "Negi"));
+        this.student.add(new StudentPojo("Shivam" , "Mandloi"));
+        this.student.add(new StudentPojo("kriti" , "sanon"));
+    }
+
     // get api /student/ getStudentData
     @GetMapping("/getStudentData")
     public List<StudentPojo> getStudent(){
-        List<StudentPojo> student = new ArrayList<>();
-        student.add(new StudentPojo("Ritika" , "Negi"));
-        student.add(new StudentPojo("Shivam" , "Mandloi"));
-        student.add(new StudentPojo("kriti" , "sanon"));
         return student;
     }
 
@@ -30,10 +37,7 @@ public class StudentRestController {
     // get api with path variable
     @GetMapping("/getStudentData/{studentId}")
     public List<StudentPojo> getStudentById(@PathVariable int studentId){
-        List<StudentPojo> student = new ArrayList<>();
-        student.add(new StudentPojo("Ritika" , "Negi"));
-        student.add(new StudentPojo("Shivam" , "Mandloi"));
-        student.add(new StudentPojo("kriti" , "sanon"));
+
         return Collections.singletonList(student.get(studentId));
     }
     //    postman request 'http://localhost:4200/myFirstApp/student/getStudentData/0'
