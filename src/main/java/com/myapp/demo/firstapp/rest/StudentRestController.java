@@ -1,14 +1,13 @@
 package com.myapp.demo.firstapp.rest;
 
+import com.myapp.demo.firstapp.Entity.StudentErrorResponse;
 import com.myapp.demo.firstapp.Entity.StudentPojo;
 import jakarta.annotation.PostConstruct;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 @RestController
@@ -36,10 +35,22 @@ public class StudentRestController {
 
     // get api with path variable
     @GetMapping("/getStudentData/{studentId}")
-    public List<StudentPojo> getStudentById(@PathVariable int studentId){
+    public StudentPojo getStudentById(@PathVariable int studentId){
+        // check if student id is valid
+        if(studentId >= student.size() || studentId < 0)
+            throw new StudentNotFoundException("Student id not found - " + studentId);
 
-        return Collections.singletonList(student.get(studentId));
+        return student.get(studentId);
     }
     //    postman request 'http://localhost:4200/myFirstApp/student/getStudentData/0'
 
+
+
+    // add an exception handler
+    @ExceptionHandler
+    public ResponseEntity<StudentErrorResponse> handleException(StudentNotFoundException s){
+        // create error response
+        StudentErrorResponse ser = new StudentErrorResponse(HttpStatus.NOT_FOUND.value() ,s.getMessage() ,System.currentTimeMillis());
+        return new ResponseEntity<>(ser , HttpStatus.NOT_FOUND);
+    }
 }
