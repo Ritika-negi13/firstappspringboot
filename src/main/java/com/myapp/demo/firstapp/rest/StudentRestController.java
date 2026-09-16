@@ -53,4 +53,12 @@ public class StudentRestController {
         StudentErrorResponse ser = new StudentErrorResponse(HttpStatus.NOT_FOUND.value() ,s.getMessage() ,System.currentTimeMillis());
         return new ResponseEntity<>(ser , HttpStatus.NOT_FOUND);
     }
+
+
+    // add another exception handler to catch any type ike if string as id
+    @ExceptionHandler
+    public ResponseEntity<StudentErrorResponse> handleAllException(Exception s){
+        StudentErrorResponse ser = new StudentErrorResponse(HttpStatus.BAD_REQUEST.value() ,s.getMessage() ,System.currentTimeMillis());
+        return new ResponseEntity<>(ser , HttpStatus.BAD_REQUEST);
+    }
 }
